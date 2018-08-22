@@ -30,7 +30,7 @@ namespace StackExchange.Profiling.EntityFramework6
                 DbConfiguration.Loaded += (_, a) =>
                 {
                     a.ReplaceService((DbProviderServices inner, object key) => _DbProviderServicesCache.GetOrAdd(key ?? _nullKeyPlaceholder, __ => new EFProfiledDbProviderServices(inner)));
-                    a.ReplaceService((DbProviderFactory inner, object key) => _DbProviderFactoryCache.GetOrAdd(key ?? _nullKeyPlaceholder, __ => new ProfiledDbProviderFactory(inner)));
+                    //a.ReplaceService((DbProviderFactory inner, object key) => _DbProviderFactoryCache.GetOrAdd(key ?? _nullKeyPlaceholder, __ => new ProfiledDbProviderFactory(null, inner)));
                     a.ReplaceService((IDbProviderFactoryResolver inner, object key) => _IDbProviderFactoryResolverCache.GetOrAdd(key ?? _nullKeyPlaceholder, __ => new EFProfiledDbProviderFactoryResolver(inner)));
                     a.ReplaceService((IDbConnectionFactory inner, object key) => _IDbConnectionFactoryCache.GetOrAdd(key ?? _nullKeyPlaceholder, __ => new EFProfiledDbConnectionFactory(inner)));
                     a.AddDependencyResolver(new EFProfiledInvariantNameResolver(), false);

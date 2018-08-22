@@ -140,7 +140,7 @@ namespace StackExchange.Profiling.Data
         /// <param name="manifestToken">The token information associated with the provider manifest.</param>
         /// <returns>The spatial data reader.</returns>
         protected override DbSpatialDataReader GetDbSpatialDataReader(DbDataReader fromReader, string manifestToken) =>
-            _tail.GetSpatialDataReader(fromReader is ProfiledDbDataReader profiled ? profiled.WrappedReader : fromReader, manifestToken);
+            _tail.GetSpatialDataReader(fromReader is ProfiledDbDataReader profiled ? profiled : fromReader, manifestToken);
 
         /// <summary>
         /// Gets the spatial services for the <c>DbProviderServices</c>.
